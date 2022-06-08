@@ -1,0 +1,37 @@
+{
+	"name": "akam-auth-service",
+	"version": "1.0.0",
+	"description": "This is a simple and dedicated service for authentication and authorization of the system.",
+	"main": "index.js",
+	"scripts": {
+		"dev": "ts-node src/index.ts"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com/professordev7/akam-auth-service.git"
+	},
+	"author": "Salar Farahmand",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/professordev7/akam-auth-service/issues"
+	},
+	"homepage": "https://github.com/professordev7/akam-auth-service#readme",
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"express": "^4.18.1",
+		"express-async-errors": "^3.1.1",
+		"joi": "^17.6.0",
+		"joi-objectid": "^4.0.2",
+		"jsonwebtoken": "^8.5.1",
+		"lodash": "^4.17.21",
+		"mongoose": "^6.3.6"
+	},
+	"devDependencies": {
+		"@types/express": "^4.17.13",
+		"@types/node": "^17.0.41",
+		"dotenv": "^16.0.1",
+		"nodemon": "^2.0.16",
+		"ts-node": "^10.8.1",
+		"typescript": "^4.7.3"
+	}
+}
