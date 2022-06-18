@@ -1,6 +1,7 @@
+import { RequestHandler } from 'express';
 import { generateToken, validateLoginUser, User } from '../models/userModel';
 
-export const authUser = async (req, res) => {
+export const authUser: RequestHandler = async (req, res) => {
 	const { error } = validateLoginUser(req.body);
 	if (error) return res.status(400).send(error.details[0].message);
 

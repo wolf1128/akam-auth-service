@@ -3,6 +3,11 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 import Joi from 'joi';
 
+interface IUser {
+	email: string;
+	password: string;
+}
+
 const userSchema = new mongoose.Schema(
 	{
 		email: {
@@ -37,13 +42,13 @@ userSchema.pre('save', async function (next) {
 	this.password = await bcrypt.hash(this.password, salt);
 });
 
-userSchema.methods.matchPassword = async function (enteredPassword) {
+userSchema.methods.matchPassword = async function (enteredPassword: string) {
 	return await bcrypt.compare(enteredPassword, this.password);
 };
 
 export const User = mongoose.model('User', userSchema);
 
-export const validateLoginUser = (user) => {
+export const validateLoginUser = (user: IUser) => {
 	const schema = Joi.object({
 		email: Joi.string().min(8).max(255).email().required(),
 		password: Joi.string().min(5).max(1024).required(),
@@ -51,19 +56,9 @@ export const validateLoginUser = (user) => {
 
 	return schema.validate(user);
 };
-export const validateRegisterUser = (user) => {
-	const schema = Joi.object({
-		email: Joi.string().min(8).max(50).email().required(),
-		password: Joi.string().min(5).max(50).required(),
-		group: Joi.objectId().required(),
-		provider: Joi.string().min(8).max(50).required(),
-	});
 
-	return schema.validate(user);
-};
-
-export const generateToken = (id) => {
-	return jwt.sign({ _id: id }, process.env.JWT_SECRET, {
+export const generateToken = (id: string) => {
+	return jwt.sign({ _id: id }, process.env.JWT_SECRET as string, {
 		expiresIn: '30d',
 	});
 };
