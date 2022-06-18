@@ -1,6 +1,6 @@
 # Main Goal
 
-This is a simple and dedicated service for authentication and authorization of the system.
+This is a simple and dedicated service for authentication of the system.
 
 ## Available Scripts
 
